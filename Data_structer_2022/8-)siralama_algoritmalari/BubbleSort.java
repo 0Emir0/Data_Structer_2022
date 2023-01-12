@@ -1,26 +1,42 @@
+import java.util.Random;
+
 public class BubbleSort {
-    // Diziyi Bubble Sort algoritmasını kullanarak sıralar.
-    public static void sırala(int[] dizi) {
-        // Sıralama işleminin tamamlanıp tamamlanmadığını kontrol etmek için flag.
-        boolean değisti;
-        // Dizinin tüm elemanlarını gez.
-        do {
-            // Flag'i false olarak ayarla.
-            değisti = false;
-            // Dizinin elemanlarını karşılaştır.
-            // Eğer bir eleman daha büyükse yerlerini değiştir ve flag'i true yap.
-            for (int i = 0; i < dizi.length - 1; i++) {
-                if (dizi[i] > dizi[i + 1]) {
-                    // Elemanları yer değiştir.
-                    int temp = dizi[i];
-                    dizi[i] = dizi[i + 1];
-                    dizi[i + 1] = temp;
-                    // Flag'i true yap.
-                    değisti = true;
-                }
-            }
-            // Eğer hiçbir eleman yer değiştirmediyse döngüyü sonlandır.
-        } while (değisti);
+  public static void main(String[] args) {
+
+    Random rand = new Random();
+    int[] numbers = new int[10];
+    
+    for (int i = 0; i < numbers.length; i++) {
+      numbers[i] = rand.nextInt(100);
     }
+    
+    System.out.print("Sıralanmadan önce:");
+    printArray(numbers);
+    
+    boolean swappedSomething = true;
+    
+    while (swappedSomething) {
+      swappedSomething = false;
+      
+      for (int i = 0; i < numbers.length - 1; i++) {
+        if (numbers[i] > numbers[i + 1]) {
+          swappedSomething = true;
+          int temp = numbers[i];
+          numbers[i] = numbers[i + 1];
+          numbers[i + 1] = temp;
+        }
+      }
+    }
+
+    
+    System.out.print("\nSıralanmış hali  :");
+    printArray(numbers);
+  }
+
+  private static void printArray(int[] numbers) {
+    for (int i = 0; i < numbers.length; i++) {
+      System.out.print(" "+numbers[i]);
+    }
+  }
 }
 
